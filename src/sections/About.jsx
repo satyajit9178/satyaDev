@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Github, Linkedin, Twitter, Mail, ExternalLink, MapPin, GraduationCap, Briefcase } from 'lucide-react'
-import { personal, socials } from '../data/portfolio'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Github, Linkedin, Twitter, Mail, ExternalLink, MapPin, GraduationCap, User } from 'lucide-react'
+import { personal } from '../data/portfolio'
 
 function CodeLine({ children, delay = 0, indent = 0 }) {
   return (
@@ -19,6 +19,62 @@ function CodeLine({ children, delay = 0, indent = 0 }) {
 
 const TAGLINE_TECHS = ["JavaScript", "React", "HTML & CSS", "C++", "Node.js"]
 
+function Avatar() {
+  const [imgError, setImgError] = useState(false)
+
+  return (
+    <div className="relative">
+      {/* Glow ring */}
+      <div
+        className="absolute inset-0 rounded-full"
+        style={{
+          background: 'conic-gradient(from 0deg, #007ACC, #4fc3f7, #007ACC)',
+          padding: 2,
+          borderRadius: '50%',
+          animation: 'spin 4s linear infinite',
+        }}
+      />
+      {/* Avatar wrapper */}
+      <div
+        className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden flex items-center justify-center"
+        style={{
+          border: '3px solid #007ACC',
+          boxShadow: '0 0 24px rgba(0,122,204,0.5), 0 0 48px rgba(0,122,204,0.2)',
+          background: '#252526',
+        }}
+      >
+        {!imgError ? (
+          <img
+            src="/avatar.jpg"
+            alt="Satyajit Sahoo"
+            className="w-full h-full object-cover"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          /* Fallback: initials */
+          <div
+            className="w-full h-full flex items-center justify-center font-mono font-bold select-none"
+            style={{
+              background: 'linear-gradient(135deg, #007ACC22, #4fc3f722)',
+              color: '#4fc3f7',
+              fontSize: 36,
+              letterSpacing: '-2px',
+            }}
+          >
+            SS
+          </div>
+        )}
+      </div>
+      {/* Online indicator */}
+      <div
+        className="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 flex items-center justify-center"
+        style={{ background: '#4ec9b0', borderColor: '#1e1e1e', boxShadow: '0 0 8px rgba(78,201,176,0.8)' }}
+        title="Available for opportunities"
+      />
+    </div>
+  )
+}
+
 export default function About() {
   const [techIdx, setTechIdx] = useState(0)
 
@@ -27,15 +83,104 @@ export default function About() {
     return () => clearInterval(t)
   }, [])
 
-  const socialIconMap = {
-    github: Github,
-    linkedin: Linkedin,
-    twitter: Twitter,
-  }
-
   return (
     <div className="h-full overflow-y-auto p-0">
       <div className="max-w-3xl mx-auto px-4 md:px-8 py-6">
+
+        {/* ── HERO: Avatar + name + tagline ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-8 p-5 rounded-xl"
+          style={{ background: '#252526', border: '1px solid #3e3e42' }}
+        >
+          {/* Avatar */}
+          <div className="shrink-0">
+            <Avatar />
+          </div>
+
+          {/* Name + info */}
+          <div className="flex-1 text-center sm:text-left">
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.15 }}
+              className="font-mono text-xs mb-1"
+              style={{ color: '#6a9955' }}
+            >
+              {'// developer.profile.js'}
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="font-bold mb-1"
+              style={{ color: '#d4d4d4', fontSize: 26, fontFamily: 'JetBrains Mono, monospace', letterSpacing: '-0.5px' }}
+            >
+              Satyajit <span style={{ color: '#4fc3f7' }}>Sahoo</span>
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25 }}
+              className="font-mono text-sm mb-2"
+              style={{ color: '#858585' }}
+            >
+              <span style={{ color: '#ce9178' }}>Frontend Developer</span>
+              <span style={{ color: '#3e3e42' }}> · </span>
+              <span>CSE Student @ OUTR</span>
+            </motion.div>
+
+            {/* Tagline with cycling tech */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="font-mono text-xs mb-3 flex items-center gap-2 justify-center sm:justify-start flex-wrap"
+            >
+              <span style={{ color: '#858585' }}>I build web experiences using</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={techIdx}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.25 }}
+                  className="px-2 py-0.5 rounded font-semibold"
+                  style={{ background: 'rgba(0,122,204,0.15)', color: '#4fc3f7', border: '1px solid #007ACC40' }}
+                >
+                  {TAGLINE_TECHS[techIdx]}
+                </motion.span>
+              </AnimatePresence>
+            </motion.div>
+
+            {/* Meta chips */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35 }}
+              className="flex flex-wrap items-center gap-2 justify-center sm:justify-start"
+            >
+              <span className="flex items-center gap-1 text-xs font-mono px-2 py-0.5 rounded"
+                    style={{ background: '#1e1e1e', color: '#6a9955', border: '1px solid #6a995540' }}>
+                <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+                Open to opportunities
+              </span>
+              <span className="flex items-center gap-1 text-xs font-mono px-2 py-0.5 rounded"
+                    style={{ background: '#1e1e1e', color: '#858585', border: '1px solid #3e3e42' }}>
+                <MapPin size={10} />
+                Bhubaneswar, India
+              </span>
+              <span className="flex items-center gap-1 text-xs font-mono px-2 py-0.5 rounded"
+                    style={{ background: '#1e1e1e', color: '#858585', border: '1px solid #3e3e42' }}>
+                CGPA: <span style={{ color: '#dcdcaa' }}>8.99</span>
+              </span>
+            </motion.div>
+          </div>
+        </motion.div>
 
         {/* File header comment */}
         <div className="mb-6 line-numbers font-mono text-sm leading-7">
@@ -197,7 +342,7 @@ export default function About() {
         >
           <div className="flex items-start gap-3">
             <div className="p-2 rounded-lg shrink-0" style={{ background: 'rgba(0,122,204,0.1)' }}>
-              <img src="outr-logo.png" alt="OUTR Logo" width={40} height={40} className="rounded-full" />
+              <GraduationCap size={20} style={{ color: '#007ACC' }} />
             </div>
             <div>
               <div className="text-sm font-semibold mb-0.5" style={{ color: '#d4d4d4' }}>
