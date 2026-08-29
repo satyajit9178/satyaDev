@@ -119,7 +119,7 @@ export default function Explorer() {
                       {/* Static extra files */}
                       <motion.button
                         whileHover={{ x: 2 }}
-                        onClick={() => window.open('https://drive.google.com/file/d/1Eziaj53IOUmd2wQ9vhObHBnkk_6dsqRp/view?usp=sharing', '_blank')}
+                        onClick={() => window.open('https://drive.google.com/file/d/1a07PPyoZFR1b7DC6SCWujoVRF5cmNuZq/view?usp=sharing', '_blank')}
                         className="w-full flex items-center gap-2 px-2 py-1 rounded text-xs transition-colors text-left"
                         style={{ color: '#6e6e6e' }}
                       >
