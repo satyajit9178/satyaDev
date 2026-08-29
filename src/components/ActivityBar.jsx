@@ -17,7 +17,7 @@ const TOP_ITEMS = [
 
 const BOTTOM_ITEMS = [
   { id: 'github',   icon: Github,   label: 'GitHub Profile', href: 'https://github.com/satyajit9178' },
-  { id: 'resume',   icon: FileText, label: 'View Resume',    href: 'https://drive.google.com/file/d/1Eziaj53IOUmd2wQ9vhObHBnkk_6dsqRp/view?usp=sharing' },
+  { id: 'resume',   icon: FileText, label: 'View Resume',    href: 'https://drive.google.com/file/d/1a07PPyoZFR1b7DC6SCWujoVRF5cmNuZq/view?usp=sharing' },
   { id: 'settings', icon: Settings, label: 'Settings',       action: 'settings' },
 ]
 

@@ -18,7 +18,7 @@ function getColor(filename) {
 const EXTRA_COMMANDS = [
   { id: '__github', label: '> Open GitHub Profile', action: () => window.open('https://github.com/satyajit9178', '_blank') },
   { id: '__linkedin', label: '> Open LinkedIn', action: () => window.open('https://linkedin.com/in/satyajit-sahoo-0636a5297', '_blank') },
-  { id: '__resume', label: '> Download Resume', action: () => window.open('https://drive.google.com/file/d/1Eziaj53IOUmd2wQ9vhObHBnkk_6dsqRp/view?usp=sharing', '_blank') },
+  { id: '__resume', label: '> Download Resume', action: () => window.open('https://drive.google.com/file/d/1a07PPyoZFR1b7DC6SCWujoVRF5cmNuZq/view?usp=sharing', '_blank') },
 ]
 
 export default function CommandPalette() {

@@ -10,12 +10,12 @@ export const personal = {
   tagline: "I build web experiences using",
   taglineTechs: ["JavaScript", "React", "HTML", "CSS", "C++"],
   bio: [
-    "Hi there! I'm a Computer Science & Engineering student at Odisha University of Technology and Research, Bhubaneswar, with a CGPA of 8.99/10. I specialize in frontend development, DSA, and building clean, responsive web applications.",
+    "Hi there! I'm a Computer Science & Engineering student at Odisha University of Technology and Research, Bhubaneswar, with a CGPA of 9.05/10. I specialize in frontend development, DSA, and building clean, responsive web applications.",
     "I recently completed a Web Developer Internship at SkillCraft Technology where I built multiple responsive web apps — from landing pages to interactive games — using React and modern JavaScript.",
     "I'm passionate about learning, building, and growing in the tech space. Currently diving deeper into DSA using C++ and exploring system design concepts.",
     "If you're looking for a motivated and collaborative team player, let's connect — I'd love to be part of something exciting!",
   ],
-  resumeUrl: "https://drive.google.com/file/d/1Eziaj53IOUmd2wQ9vhObHBnkk_6dsqRp/view?usp=sharing",
+  resumeUrl: "https://drive.google.com/file/d/1a07PPyoZFR1b7DC6SCWujoVRF5cmNuZq/view?usp=sharing",
   email: "satyajits104@gmail.com",
   copyright: "2026 Satyajit Sahoo",
 }
